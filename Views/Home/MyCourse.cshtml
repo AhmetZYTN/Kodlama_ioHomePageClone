@@ -1,0 +1,25 @@
+﻿@model List<Course> 
+
+@{
+    ViewBag.Title = "AddCourse";
+}
+
+    <h1>Yeni course Ekleme Sayfası</h1>
+    <br />
+@using (Html.BeginForm("AddCourse", "AdminCourse", FormMethod.Post))
+{
+    for (int i = 0; i < Model.Count; i++)
+    {
+            <div class="form-group">
+            @Html.LabelFor(model => model[i].Title, "Kurs Adı")
+            @Html.TextBoxFor(model => model[i].Title, new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model[i].Title, "", new { @class = "text-danger" })
+                <br /><br />
+            @Html.LabelFor(model => model[i].Description, "Açıklamayı Yazınız")
+            @Html.TextAreaFor(model => model[i].Description, new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model[i].Description, "", new { @class = "text-danger" })
+                <br /><br />
+                <button class="btn btn-info">Kaydet</button>
+            </div>
+    }
+}

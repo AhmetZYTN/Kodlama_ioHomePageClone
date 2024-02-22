@@ -1,0 +1,31 @@
+﻿@model Course
+
+@{
+    ViewBag.Title = "Add Course";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Add Course</h1>
+
+@using (Html.BeginForm("AddCourse", "AdminCourse", FormMethod.Post))
+{
+    <div class="form-group">
+        @Html.LabelFor(model => model.Title, "Course Title")
+        @Html.TextBoxFor(model => model.Title, new { @class = "form-control" })
+        @Html.ValidationMessageFor(model => model.Title, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Description, "Course Description")
+        @Html.TextAreaFor(model => model.Description, new { @class = "form-control" })
+        @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.InstructorId, "Instructor ID")
+        @Html.TextBoxFor(model => model.InstructorId, new { @class = "form-control" })
+        @Html.ValidationMessageFor(model => model.InstructorId, "", new { @class = "text-danger" })
+    </div>
+
+    <button type="submit" class="btn btn-primary">Add Course</button>
+}
